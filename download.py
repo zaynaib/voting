@@ -10,7 +10,7 @@ from selenium.webdriver.chrome.options import Options
 #object of ChromeOptions class
 op = webdriver.ChromeOptions()
 #browser preferences
-p = {'download.default_directory':'C:\Users\ghs6kor\Downloads\Test'}
+p = {'download.default_directory':'/home/ogiwa/Desktop'}
 #add options to browser
 op.add_experimental_option('prefs', p)
 
@@ -45,14 +45,21 @@ for i in range(len(links_found)):
 
 browser.quit()
 '''
-
+#https://stackoverflow.com/questions/46632720/how-to-download-with-splinter-knowing-direction-and-name-of-the-file
+#https://stackoverflow.com/questions/17676036/python-webdriver-to-handle-pop-up-browser-windows-which-is-not-an-alert
+#https://stackoverflow.com/questions/42781483/right-click-on-an-href-and-choose-save-link-as-in-python-selenium
+https://stackoverflow.com/questions/48603184/download-file-generated-after-click-with-splinter
 #loop through and all the 2020_ links
 #click for each a element on the page
 # and download into a folder
 
 links_found[0].click()
 shapefile_links = browser.find_by_css('a')[1:]
+window1 = shapefile_links[1].right_click()
+print(window1)
 
+#https://splinter.readthedocs.io/en/latest/mouse-interaction.html?highlight=right%20click
+#https://www.youtube.com/watch?v=O5xJOgTtLc0
 
 #for e in range(len(shapefile_links)):
 #    shapefile_links[e].click()
